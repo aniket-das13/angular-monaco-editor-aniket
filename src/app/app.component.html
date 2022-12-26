@@ -1,0 +1,18 @@
+<button id="launchbtn" (click)="onBtnClick()">Launch Editor</button>
+<select
+  id="editorlng"
+  #langselect
+  *ngIf="showEditor"
+  (change)="onSelectChange(langselect.value)"
+>
+  <option value="html" selected>HTML</option>
+  <option value="javascript">JS</option>
+  <option value="java">Java</option>
+  <option value="json">JSON</option>
+</select>
+<ngx-monaco-editor
+  *ngIf="showEditor"
+  [options]="editorOptions"
+  [(ngModel)]="code"
+  (init)="editorInit($event)"
+></ngx-monaco-editor>
